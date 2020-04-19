@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+function mostrar() {
+ var x = $("#passwd").val();
+ var y = $("#passwd_repeat").val();
+ if(x!=y){
+ var res1="Las contraseñas no coinsiden";
+ document.getElementById('resultado').innerHTML = res1;
+ }else{
+ var res2="Las contraseñas son iguales";
+ document.getElementById('resultado').innerHTML = res2;
+ }
+}
+</script>
+<span>correo:</span><br>
+<input type="email" name="correo"  id="correo"/>
+  <p><span id="emailOK"></span></p>
+<script>
+ document.getElementById('correo').addEventListener('input', function() {
+                            campo = event.target;
+                            valido = document.getElementById('emailOK');
+        
+                            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+                            //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+                            if (emailRegex.test(campo.value)) {
+                            valido.innerText = "Correo válido";
+                            } else {
+                            valido.innerText = "Correo no válido";
+                            }
+                            });
+</script>
+<span>password 1:</span><br>
+<input type="password" name="passwd"  id="passwd"/>
+<br>
+<span>password 2:</span><br>
+<input type="password" name="passwd_repeat"  onkeyup="mostrar()" id="passwd_repeat"/>
+<br>
+<p id="resultado"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</body>
+</html> 
